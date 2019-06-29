@@ -8,13 +8,10 @@ sources = [
 ]
 
 script = raw"""
-    cd ${WORKSPACE}/srcdir
-
-    pwd
-    ls
+    cd ${WORKSPACE}/srcdir/apache-arrow-0.13.0
 
     # Build C++ library (required for C library)
-    #cd arrow/cpp
+    cd cpp
     mkdir release
     cd release
     cmake -DARROW_PARQUET=ON ..
