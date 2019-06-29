@@ -10,8 +10,11 @@ sources = [
 script = raw"""
     cd ${WORKSPACE}/srcdir
 
+    pwd
+    ls
+
     # Build C++ library (required for C library)
-    cd arrow/cpp
+    #cd arrow/cpp
     mkdir release
     cd release
     cmake -DARROW_PARQUET=ON ..
