@@ -8,6 +8,8 @@ sources = [
 ]
 
 script = raw"""
+    apk add boost-dev
+
     cd ${WORKSPACE}/srcdir/apache-arrow-0.13.0
 
     # Build C++ library (required for C library)
