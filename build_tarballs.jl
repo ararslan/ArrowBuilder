@@ -14,7 +14,7 @@ script = raw"""
     cd cpp
     mkdir release
     cd release
-    cmake -DARROW_PARQUET=ON ..
+    cmake -DARROW_DEPENDENCY_SOURCE=BUNDLED -DARROW_PARQUET=ON ..
     make
     make parquet
     make install
