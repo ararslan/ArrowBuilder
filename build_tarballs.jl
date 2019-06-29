@@ -8,8 +8,6 @@ sources = [
 ]
 
 script = raw"""
-    apk add boost-dev
-
     cd ${WORKSPACE}/srcdir/apache-arrow-0.13.0
 
     # Build C++ library (required for C library)
@@ -35,6 +33,8 @@ products(prefix) = [
     LibraryProduct(prefix, "libparquet-glib", :libparquet),
 ]
 
-dependencies = []
+dependencies = [
+    "https://github.com/twadleigh/BoostBuilder/releases/download/v1.68.0-4/build_Boost.v1.68.0.jl",
+]
 
 build_tarballs(ARGS, name, version, sources, script, platforms, products, dependencies)
