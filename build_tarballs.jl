@@ -11,7 +11,7 @@ script = raw"""
     cd ${WORKSPACE}/srcdir
 
     # Build C++ library (required for C library)
-    cd cpp
+    cd arrow/cpp
     mkdir release
     cd release
     cmake -DARROW_PARQUET=ON ..
