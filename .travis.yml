@@ -1,0 +1,21 @@
+language: julia
+os: linux
+julia:
+  - 1.0
+notifications:
+  email: false
+git:
+  depth: 99999999
+cache:
+  directories:
+    - downloads
+env:
+  global:
+    - BINARYBUILDER_DOWNLOADS_CACHE=downloads
+    - BINARYBUILDER_AUTOMATIC_APPLE=true
+sudo: required
+before_script:
+  - julia -e 'using Pkg; Pkg.develop("BinaryBuilder")'
+  - julia -e 'using Pkg; Pkg.add("BinaryProvider")'
+script:
+  - julia build_tarballs.jl
