@@ -8,21 +8,26 @@ sources = [
 ]
 
 script = raw"""
-    cd ${WORKSPACE}/srcdir/apache-arrow-0.13.0
+    cd ${WORKSPACE}/srcdir/apache-arrow-*
 
     # Build C++ library (required for C library)
     cd cpp
     mkdir release
     cd release
-    cmake -DARROW_DEPENDENCY_SOURCE=BUNDLED -DARROW_PARQUET=ON ..
-    make
-    make parquet
+    cmake .. \
+        -DCMAKE_INSTALL_PREFIX=${prefix} \
+        -DCMAKE_TOOLCHAIN_FILE=/opt/${target}/${target}.toolchain \
+        -DARROW_DEPENDENCY_SOURCE=BUNDLED \
+        -DARROW_PARQUET=ON \
+        -DBOOST_ROOT=${WORKSPACE}/destdir
+    make -j${nproc}
+    make -j${nproc} parquet
     make install
 
     # Build C library
     cd ../../c_glib
-    ./configure
-    make
+    ./configure --prefix=${prefix}
+    make -j${nproc}
     make install
     """
 
