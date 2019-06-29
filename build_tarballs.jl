@@ -27,8 +27,6 @@ script = raw"""
     echo 'Building C library...'
     cd ../../c_glib
     ./configure \
-        --cc=${CC} \
-        --cxx=${CXX} \
         --prefix=${prefix} \
         --sysroot=/opt/${target}/${target}/sys-root \
         --sysinclude=${prefix}/include \
