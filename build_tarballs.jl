@@ -10,7 +10,7 @@ sources = [
 script = raw"""
     cd ${WORKSPACE}/srcdir/apache-arrow-*
 
-    # Build C++ library (required for C library)
+    echo 'Building C++ library (required for C library)...'
     cd cpp
     mkdir release
     cd release
@@ -24,9 +24,16 @@ script = raw"""
     make -j${nproc} parquet
     make install
 
-    # Build C library
+    echo 'Building C library...'
     cd ../../c_glib
-    ./configure --prefix=${prefix}
+    ./configure \
+        --cc=${CC} \
+        --cxx=${CXX} \
+        --prefix=${prefix} \
+        --sysroot=/opt/${target}/${target}/sys-root \
+        --sysinclude=${prefix}/include \
+        --extra-cflags="-I${prefix}/include" \
+        --extra-ldflags="-L${prefix}/lib"
     make -j${nproc}
     make install
     """
