@@ -18,6 +18,8 @@ script = raw"""
         -DCMAKE_INSTALL_PREFIX=${prefix} \
         -DCMAKE_TOOLCHAIN_FILE=/opt/${target}/${target}.toolchain \
         -DARROW_DEPENDENCY_SOURCE=BUNDLED \
+        -DARROW_COMPUTE=OFF \
+        -DARROW_IPC=OFF \
         -DARROW_PARQUET=ON \
         -DBOOST_ROOT=${WORKSPACE}/destdir
     make -j${nproc}
@@ -31,7 +33,8 @@ script = raw"""
         --build=${target} \
         --with-sysroot=/opt/${target}/${target}/sys-root \
         --disable-static \
-        --disable-glibtest
+        --disable-glibtest \
+        --disable-gtk-doc
     make -j${nproc}
     make install
     """
