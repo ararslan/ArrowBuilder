@@ -49,6 +49,7 @@ products(prefix) = [
 dependencies = [
     "https://github.com/staticfloat/GlibBuilder/releases/download/v2.54.2-2/build.jl",
     "https://github.com/twadleigh/BoostBuilder/releases/download/v1.68.0-4/build_Boost.v1.68.0.jl",
+    "https://github.com/BenJWard/ZLibBuilder/releases/download/v1.2.11/build_ZLibBuilder.v1.2.11.jl",
 ]
 
 build_tarballs(ARGS, name, version, sources, script, platforms, products, dependencies)
