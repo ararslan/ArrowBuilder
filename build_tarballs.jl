@@ -26,13 +26,12 @@ script = raw"""
 
     echo 'Building C library...'
     cd ../../c_glib
-    ./configure --help
-    exit 1
-    #    --prefix=${prefix} \
-    #    --sysroot=/opt/${target}/${target}/sys-root \
-    #    --sysinclude=${prefix}/include \
-    #    --extra-cflags="-I${prefix}/include" \
-    #    --extra-ldflags="-L${prefix}/lib"
+    ./configure
+        --prefix=${prefix} \
+        --build=${target} \
+        --with-sysroot=/opt/${target}/${target}/sys-root \
+        --disable-static \
+        --disable-glibtest
     make -j${nproc}
     make install
     """
