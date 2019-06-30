@@ -44,6 +44,7 @@ products(prefix) = [
 ]
 
 dependencies = [
+    "https://github.com/staticfloat/GlibBuilder/releases/download/v2.54.2-2/build.jl",
     "https://github.com/twadleigh/BoostBuilder/releases/download/v1.68.0-4/build_Boost.v1.68.0.jl",
 ]
 
